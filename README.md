@@ -12,6 +12,22 @@ Benefits:
 
 Status: (very) experimental
 
+## Basic implementation
+
+File: `authsock.py`
+
+Basic authentication with a static username and password
+
+## TOTP implementation
+
+File: `authsock_otp.py`
+
+One time password implementation
+
+To generate a token (valid for 30s by default):
+
+    python3 -c "import oath; print(oath.totp('123456'))"
+
 Setup
 =====
 
