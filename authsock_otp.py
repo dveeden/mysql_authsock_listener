@@ -23,6 +23,7 @@ def check_auth(**kwargs):
 
 if __name__ == "__main__":
     logging.root.setLevel(logging.DEBUG)
+    logging.info('Startup')
     socket_name = '/tmp/authsock.sock'
     
     try:
@@ -35,8 +36,11 @@ if __name__ == "__main__":
     
     sock.bind(socket_name)
     sock.listen(1)
+    os.chmod(socket_name, 0o0777)
+    logging.info('Listening on socket')
     while True:
         conn, client_addr = sock.accept()
+        logging.info('accept() done')
         try:
             while True:
                 data = conn.recv(100)
